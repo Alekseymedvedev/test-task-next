@@ -12,10 +12,11 @@ interface IType {
 export const RedirectButtons: FC<IType> = memo(({children,path}) => {
     const { push } = useRouter()
     return (
-        // <button className={cls.btn} onClick={()=>  push('/')}>
-        //     {children}
-        // </button>
-        <Link className={cls.btn} href={'/'}>Главная</Link>
+        <>
+            {/*<button className={cls.btn} onClick={()=>  push('/')}>{children}</button>*/}
+            <Link className={cls.btn} href={'/'}>Главная</Link>
+        </>
+
     )
 })
 export default RedirectButtons
