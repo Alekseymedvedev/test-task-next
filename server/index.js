@@ -23,8 +23,6 @@ import express from "express"
 
          app.get('/api/:game/:id', (req, res,) => {
             res.set('Access-Control-Allow-Origin', '*')
-
-            console.log(req.params)
             return res.send(data[`${req.params.game}/${req.params.id}`])
         });
         app.listen(port, () => {});
