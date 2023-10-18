@@ -41,7 +41,7 @@ const GameList: FC<IType> = memo(({data}) => {
             <div className={cls.box}>
                 <Select data={currency} onChange={handlerCurrencyFilter}/>
                 <Select data={provider} onChange={handlerProviderFilter}/>
-                <Button className="button" onClick={handlerSort}>handlerSort</Button>
+                <Button onClick={handlerSort}>Сортировать</Button>
             </div>
             <ul className={cls.list}>
                 {
