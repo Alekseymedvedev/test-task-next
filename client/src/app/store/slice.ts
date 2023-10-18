@@ -58,9 +58,7 @@ export const game = createSlice({
                         return true
                     }
                 }
-
             })
-
         },
         dataSort: (state: GameState) => {
             const quickSort = (arr) => {
@@ -71,7 +69,7 @@ export const game = createSlice({
                 const less = arr.slice(1).filter(item => item[1].collections.popularity < pivot[1].collections.popularity)
                 const greater = arr.slice(1).filter(item => item[1].collections.popularity > pivot[1].collections.popularity)
 
-                 return [...quickSort(less), pivot, ...quickSort(greater)]
+                return [...quickSort(less), pivot, ...quickSort(greater)]
             }
             state.value = quickSort(state.data)
         },

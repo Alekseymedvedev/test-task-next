@@ -1,4 +1,4 @@
-.btn{
+.btn {
   padding: 8px 16px;
   border: 2px solid var(--accent);
   border-radius: 4px;
@@ -7,11 +7,13 @@
   font-weight: 600;
   cursor: pointer;
   transition: all .3s;
-  &:hover{
+
+  &:hover {
     color: #fff;
     background-color: var(--accent);
   }
 }
-.center{
+
+.center {
   margin: 0 auto;
 }

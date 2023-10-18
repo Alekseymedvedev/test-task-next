@@ -1,7 +1,7 @@
 "use client"
 import React, {FC, memo, ReactNode} from 'react'
 import cls from './button.module.scss'
-import { useRouter} from "next/navigation";
+import {useRouter} from "next/navigation";
 import Link from "next/link";
 
 interface IType {
@@ -9,8 +9,8 @@ interface IType {
     path: string
 }
 
-export const RedirectButtons: FC<IType> = memo(({children,path}) => {
-    const { push } = useRouter()
+export const RedirectButtons: FC<IType> = memo(({children, path}) => {
+    const {push} = useRouter()
     return (
         <>
             {/*<button className={cls.btn} onClick={()=>  push('/')}>{children}</button>*/}

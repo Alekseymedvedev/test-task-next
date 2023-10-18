@@ -1,8 +1,6 @@
-
-
-import { readFile } from 'fs/promises'
+import {readFile} from 'fs/promises'
 import express from "express"
- import bodyParser from "body-parser"
+import bodyParser from "body-parser"
 
 
 (async () => {
@@ -21,11 +19,12 @@ import express from "express"
             return res.send(data)
         });
 
-         app.get('/api/:game/:id', (req, res,) => {
+        app.get('/api/:game/:id', (req, res,) => {
             res.set('Access-Control-Allow-Origin', '*')
             return res.send(data[`${req.params.game}/${req.params.id}`])
         });
-        app.listen(port, () => {});
+        app.listen(port, () => {
+        });
     } catch (error) {
         console.error(error);
         process.exit(1);

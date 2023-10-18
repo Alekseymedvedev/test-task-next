@@ -11,9 +11,8 @@ interface IType {
 export const Card: FC<IType> = memo(({id, title}) => {
     // console.log('test render card')
     return (
-        <li className={cls.card}>
-            <Link href={`${id}`}>
-                <div className={cls.img}>
+        <li>
+            <Link className={cls.card} href={`${id}`}>
                     <Image
                         src={`https://cdn2.softswiss.net/i/s2/${id}.png`}
                         layout="responsive"
@@ -21,7 +20,6 @@ export const Card: FC<IType> = memo(({id, title}) => {
                         height={180}
                         alt={title}
                     />
-                </div>
                 <div className={cls.title}>{title}</div>
             </Link>
         </li>

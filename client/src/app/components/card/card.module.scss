@@ -1,23 +1,26 @@
-.card{
+.card {
   max-width: 165px;
   width: 100%;
+  height: 100%;
   display: block;
   padding-bottom: 24px;
   background-color: var(--grey);
   border-radius: 8px;
   overflow: hidden;
 }
-.img{
-  max-width: 100%;
-  position: relative;
+
+.img {
+  display: block;
 }
-.title{
+
+.title {
   margin: 8px auto 0;
   padding: 0 8px;
   font-size: 16px;
   font-weight: 600;
   transition: all .3s;
-  &:hover{
+
+  &:hover {
     color: var(--accent);
   }
 }

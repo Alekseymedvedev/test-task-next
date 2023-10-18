@@ -1,12 +1,13 @@
-.list{
+.list {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 12px;
   margin-bottom: 16px;
 }
-.box{
+
+.box {
   display: flex;
-  gap:12px;
+  gap: 12px;
   margin-bottom: 32px;
 }

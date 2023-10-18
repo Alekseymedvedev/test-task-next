@@ -6,7 +6,7 @@ interface IType {
     onClick: () => void
 }
 
-export const Button: FC<IType> = memo(({children,onClick}) => {
+export const Button: FC<IType> = memo(({children, onClick}) => {
     return (
         <button className={cls.btn} onClick={onClick}>{children}</button>
     )
