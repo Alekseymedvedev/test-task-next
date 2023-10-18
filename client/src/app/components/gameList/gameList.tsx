@@ -46,9 +46,9 @@ const GameList: FC<IType> = memo(({data}) => {
             <ul className={cls.list}>
                 {
                     value.slice(0, lastItem).map((item: any) =>
-                        <li key={item[0]}>
-                            <Card title={item[1]?.title} id={item[0]}/>
-                        </li>
+
+                            <Card key={item[0]} title={item[1]?.title} id={item[0]}/>
+
                     )
                 }
             </ul>
