@@ -22,17 +22,17 @@ const GameList: FC<IType> = memo(({data}) => {
 
     const handlerProviderFilter = useCallback((val) => {
         dispatch(providerFilter(val))
-    }, [value])
+    }, [])
 
     const handlerCurrencyFilter = useCallback((val) => {
         dispatch(currencyFilter(val))
-    }, [value])
-    const handlerSort = () => {
+    }, [])
+    const handlerSort = useCallback(() => {
         dispatch(dataSort(data))
-    }
-    const handlerAdd = () => {
+    }, [])
+    const handlerAdd = useCallback(() => {
         dispatch(increment())
-    }
+    }, [])
     if (value.length < 1) {
         return <h1>...Loading</h1>
     }
