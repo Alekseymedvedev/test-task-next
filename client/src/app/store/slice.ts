@@ -1,7 +1,16 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 type GameState = {
-    data: [string, unknown][]
+    data: [
+        string,
+        {
+            real: {},
+            provider: string,
+            collections: {
+                popularity: number
+            }
+        }
+    ][]
     lastItem: number
     value: {}[]
     provider: string[]
