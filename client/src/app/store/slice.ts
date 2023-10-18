@@ -1,7 +1,7 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {createSlice} from "@reduxjs/toolkit";
 
 type GameState = {
-    data: {}
+    data: [string, unknown][]
     firstItem: number
     lastItem: number
     value: {}[]
@@ -10,7 +10,7 @@ type GameState = {
 };
 
 const initialState: GameState = {
-    data: {},
+    data: [],
     firstItem: 0,
     lastItem: 12,
     value: [],
@@ -22,9 +22,9 @@ export const game = createSlice({
     name: "game",
     initialState,
     reducers: {
-        getGames: (state: GameState, action: PayloadAction<{}>) => {
-            state.data = action.payload
-            state.value = Object.entries(state.data)
+        getGames: (state: GameState, action: { payload: {} }) => {
+            state.data = Object.entries(action.payload)
+            state.value = state.data
 
             const keysArr: any = Object.values(action.payload).filter((item, i) => Object.values(action.payload).findIndex(a => a.provider === item.provider) === i)
             let arrProvider = []
@@ -46,13 +46,12 @@ export const game = createSlice({
             state.provider = arrProvider
             state.currency = arrCurrency
         },
-        providerFilter: (state: GameState, action: PayloadAction<string>) => {
-            const arr = Object.entries(state.data)
-            state.value = arr.filter(item => item[1].provider === action.payload)
+        providerFilter: (state: GameState, action: { payload: string }) => {
+            state.value = state.data.filter(item => item[1].provider === action.payload)
 
         },
-        currencyFilter: (state: GameState, action: PayloadAction<string>) => {
-            state.value = Object.entries(state.data).filter(item => {
+        currencyFilter: (state: GameState, action: { payload: string }) => {
+            state.value = state.data.filter(item => {
                 const arr = Object.keys(item[1].real)
                 for (let i = arr.length - 1; i >= 0; i--) {
                     if (arr[i] === action.payload) {
@@ -63,11 +62,24 @@ export const game = createSlice({
             })
 
         },
+        dataSort: (state: GameState) => {
+            const quickSort = (arr) => {
+                if (arr.length <= 1) {
+                    return arr
+                }
+                const pivot = arr[0]
+                const less = arr.slice(1).filter(item => item[1].collections.popularity < pivot[1].collections.popularity)
+                const greater = arr.slice(1).filter(item => item[1].collections.popularity > pivot[1].collections.popularity)
+
+                 return [...quickSort(less), pivot, ...quickSort(greater)]
+            }
+            state.value = quickSort(state.data)
+        },
         increment: (state: GameState) => {
             state.lastItem += 12;
         },
     },
 });
 
-export const {getGames, providerFilter, currencyFilter, increment} = game.actions;
+export const {getGames, providerFilter, currencyFilter, increment, dataSort} = game.actions;
 export default game.reducer;

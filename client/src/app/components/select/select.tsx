@@ -1,5 +1,5 @@
 import React, {FC, memo} from 'react'
-import cls from './Select.module.scss'
+import cls from './select.module.scss'
 
 
 interface IType {
@@ -11,7 +11,7 @@ interface IType {
 export const Select: FC<IType> = memo(({data, onChange}) => {
     // console.log('test render select')
     return (
-        <select onChange={(e) => onChange(e.target.value)}>
+        <select className={cls.select} onChange={(e) => onChange(e.target.value)}>
             {
                 data && data?.map(item =>
                     <option key={item} value={item}>{item}</option>

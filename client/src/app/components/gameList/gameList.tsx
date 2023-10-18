@@ -4,8 +4,9 @@ import React, {FC, memo, useCallback, useEffect} from 'react'
 import cls from './gameList.module.scss'
 import {Card} from "@/app/components/card/card";
 import {useAppDispatch, useAppSelector} from "@/app/hooks/hooks";
-import gameReducer, {currencyFilter, getGames, increment, providerFilter} from "@/app/store/slice";
+import {currencyFilter, dataSort, getGames, increment, providerFilter} from "@/app/store/slice";
 import {Select} from "@/app/components/select/select";
+import Button from "@/app/components/buttons/button";
 
 interface IType {
     data?: any
@@ -19,31 +20,39 @@ const GameList: FC<IType> = memo(({data}) => {
         dispatch(getGames(data))
     }, [data])
 
-    const handlerProviderFilter = useCallback((value) => {
-        dispatch(providerFilter(value))
+    const handlerProviderFilter = useCallback((val) => {
+        dispatch(providerFilter(val))
     }, [value])
 
-    const handlerCurrencyFilter = useCallback((value) => {
-        dispatch(currencyFilter(value))
+    const handlerCurrencyFilter = useCallback((val) => {
+        dispatch(currencyFilter(val))
     }, [value])
-
+    const handlerSort = () => {
+        dispatch(dataSort(data))
+    }
     const handlerAdd = () => {
         dispatch(increment())
     }
+    if (value.length < 1) {
+        return <h1>...Loading</h1>
+    }
     return (
         <>
-            <Select data={currency} onChange={handlerCurrencyFilter}/>
-            <Select data={provider} onChange={handlerProviderFilter}/>
-            <ul className={cls.wrapper}>
+            <div className={cls.box}>
+                <Select data={currency} onChange={handlerCurrencyFilter}/>
+                <Select data={provider} onChange={handlerProviderFilter}/>
+                <Button className="button" onClick={handlerSort}>handlerSort</Button>
+            </div>
+            <ul className={cls.list}>
                 {
                     value.slice(0, lastItem).map((item: any) =>
                         <li key={item[0]}>
-                            <Card title={item[1].title} id={item[0]}/>
+                            <Card title={item[1]?.title} id={item[0]}/>
                         </li>
                     )
                 }
             </ul>
-            <button onClick={handlerAdd}>показать еще</button>
+            <Button onClick={handlerAdd}>показать еще</Button>
         </>
     )
 })

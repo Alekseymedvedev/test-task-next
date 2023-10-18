@@ -1,12 +1,65 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 :root {
-
+    --accent: #00639A;
+    --grey: #f3f3f3;
 }
-.container{
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html,
+body {
+    height: 100%;
+    font-style: normal;
+}
+
+body {
+    scroll-behavior: smooth;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+select,
+input,
+button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+ul,
+li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+ul,
+ol,
+li,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+}
+
+.container {
     max-width: 1140px;
     width: 100%;
     margin: 0 auto;
 }
+
