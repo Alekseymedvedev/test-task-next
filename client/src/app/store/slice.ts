@@ -2,7 +2,6 @@ import {createSlice} from "@reduxjs/toolkit";
 
 type GameState = {
     data: [string, unknown][]
-    firstItem: number
     lastItem: number
     value: {}[]
     provider: string[]
@@ -11,7 +10,6 @@ type GameState = {
 
 const initialState: GameState = {
     data: [],
-    firstItem: 0,
     lastItem: 12,
     value: [],
     provider: [],
