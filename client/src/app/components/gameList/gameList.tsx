@@ -9,7 +9,7 @@ import {Select} from "@/app/components/select/select";
 import Button from "@/app/components/buttons/button";
 
 interface IType {
-    data?: any
+    data: [string,{ title:string }][]
 }
 
 const GameList: FC<IType> = memo(({data}) => {
@@ -45,7 +45,7 @@ const GameList: FC<IType> = memo(({data}) => {
             </div>
             <ul className={cls.list}>
                 {
-                    value.slice(0, lastItem).map((item: any) =>
+                    value.slice(0, lastItem).map((item) =>
                         <Card key={item[0]} title={item[1]?.title} id={item[0]}/>
                     )
                 }
